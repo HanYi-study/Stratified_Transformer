@@ -110,5 +110,6 @@ Installed /home/hy/miniconda3/envs/stratified_transformer_02/lib/python3.7/site-
 Processing dependencies for pointops2==0.0.0
 Finished processing dependencies for pointops2==0.0.0
 ```
-
+ - --------------------------------------------------------------------------------------------------------------------------finished 25/08/06 20：42
+---
 ## S3DIS数据集准备（数据集预处理）
