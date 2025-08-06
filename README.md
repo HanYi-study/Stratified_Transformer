@@ -1,7 +1,8 @@
 # Stratified_Transformer  
 
 ## 环境配置：
-```   
+- 第一次安装（失败）：
+``` bash  
 conda create -n stratified_transformer python=3.8
 conda activate stratified_transformer
 wget https://download.pytorch.org/whl/cu116/torch-1.12.1%2Bcu116-cp38-cp38-linux_x86_64.whl -O torch-1.12.1+cu116-cp38-cp38-linux_x86_64.whl
@@ -9,8 +10,8 @@ wget https://download.pytorch.org/whl/cu116/torchvision-0.13.1%2Bcu116-cp38-cp38
 pip install torch-1.12.1+cu116-cp38-cp38-linux_x86_64.whl
 pip install torchvision-0.13.1+cu116-cp38-cp38-linux_x86_64.whl
 #使用pip安装两个包（确保在虚拟环境中）
-
 ```
+
 >出现的问题：  
    - ``` (stratified_transformer) hy@hy:~/projects$ python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"  
      1.12.1+cu116  
@@ -25,31 +26,31 @@ pip install torchvision-0.13.1+cu116-cp38-cp38-linux_x86_64.whl
  - 再次：python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"  
  - 还是有问题（还是同第一次一个结果）
  - 检查 NVIDIA 驱动是否以用户模式正确加载：
-   - ``` (base) hy@hy:~/projects$ conda activate stratified_transformer
-    (stratified_transformer) hy@hy:~/projects$ ls -l /dev/nvidia*  
-    crw-rw-rw- 1 root   root    195,   0 Aug  5 09:19 /dev/nvidia0  
-    crw-rw-rw- 1 root   root    195,   1 Aug  5 09:19 /dev/nvidia1  
-    crw-rw-rw- 1 nobody nogroup 195, 255 Aug  5 09:00 /dev/nvidiactl ``` 
+   - ```
+     (base) hy@hy:~/projects$ conda activate stratified_transformer  
+     (stratified_transformer) hy@hy:~/projects$ ls -l /dev/nvidia*  
+     crw-rw-rw- 1 root   root    195,   0 Aug  5 09:19 /dev/nvidia0  
+     crw-rw-rw- 1 root   root    195,   1 Aug  5 09:19 /dev/nvidia1  
+     crw-rw-rw- 1 nobody nogroup 195, 255 Aug  5 09:00 /dev/nvidiactl  
     - /dev/nvidiactl 的属主是 nobody:nogroup，这是 不正常的，可能会导致 PyTorch 无法正确初始化 CUDA。
-    - 所有设备都开放了 crw-rw-rw- 权限（即 world readable/writable），虽然看似可以访问，但如果 nvidiactl 归属不对，PyTorch 初始化仍然会失败。
- - sudo usermod -aG video $USER之后，又重新sudo reboot
+    - 所有设备都开放了 crw-rw-rw- 权限（即 world readable/writable），虽然看似可以访问，但如果 nvidiactl 归属不对，PyTorch 初始化仍然会失败。  
+ -``` sudo usermod -aG video $USER```之后，又重新sudo reboot
  - ``` (stratified_transformer) hy@hy:~/projects$ ls -l /dev/nvidia*   
     crw-rw-rw- 1 nobody nogroup 504,   0 Aug  5 09:25 /dev/nvidia-uvm  
     crw-rw-rw- 1 nobody nogroup 504,   1 Aug  5 09:25 /dev/nvidia-uvm-tools  
     crw-rw-rw- 1 root   root    195,   0 Aug  6 01:10 /dev/nvidia0  
     crw-rw-rw- 1 root   root    195,   1 Aug  6 01:10 /dev/nvidia1  
-    crw-rw-rw- 1 nobody nogroup 195, 255 Aug  5 09:00 /dev/nvidiactl  # 未成功解决权限问题 ```
----
-- ``` (stratified_transformer) hy@hy:~/projects$ python   
-  Python 3.8.20 (default, Oct  3 2024, 15:24:27)   
-  [GCC 11.2.0] :: Anaconda, Inc. on linux  
-  Type "help", "copyright", "credits" or "license" for more information.  
-  >>> import torch  
-  t(torch.cuda.get_device_name(0))  
-  >>> print(torch.cuda.is_available())  
-  True  
-  >>> print(torch.cuda.get_device_name(0))  
-  NVIDIA GeForce RTX 4090 D ```
+    crw-rw-rw- 1 nobody nogroup 195, 255 Aug  5 09:00 /dev/nvidiactl  # 未成功解决权限问题 
+    (stratified_transformer) hy@hy:~/projects$ python   
+    Python 3.8.20 (default, Oct  3 2024, 15:24:27)   
+    [GCC 11.2.0] :: Anaconda, Inc. on linux  
+    Type "help", "copyright", "credits" or "license" for more information.  
+    >>> import torch  
+    t(torch.cuda.get_device_name(0))  
+    >>> print(torch.cuda.is_available())  
+    True  
+    >>> print(torch.cuda.get_device_name(0))  
+    NVIDIA GeForce RTX 4090 D ```
 - 当前环境配置确认：  
   Python 版本：3.8.20  
   CUDA 驱动版本：11.6  
@@ -57,7 +58,8 @@ pip install torchvision-0.13.1+cu116-cp38-cp38-linux_x86_64.whl
   GPU 型号：NVIDIA GeForce RTX 4090 D
 
 ---
-```
+- 第二次安装（失败）：
+```bash
 conda create -n stratified_transformer python=3.8  # open3d==0.10.0.0 只支持 Python >=3.6 且 <3.9，你的Python是3.9所以不符合要求
 conda activate stratified_transformer  
 pip install --upgrade pip setuptools wheel  
@@ -75,5 +77,26 @@ pip install -r requirements.txt
 pip uninstall torch torchvision torchaudio -y  #卸载当前旧版本 PyTorch
 pip install torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118  # 安装支持 sm_89 的 PyTorch（CUDA 11.8，适配 RTX 4090）
 
-
 ```
+---
+- 第三次安装：
+```bash
+conda create -n stratified_transformer_02 python=3.7
+conda activate stratified_transformer_02
+wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+sudo sh cuda_11.8.0_520.61.05_linux.run
+# 上面这两行是安装cuda11.8（在安装11.8之前我把所有的cuda全部删除了，后期还得再下回来，删除的原因是我没搞懂cuda存在于哪里，由谁使用）
+export CUDA_HOME=/usr/local/cuda-11.8
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+# 安装好cuda之后必须配置好环境变量
+source ~/.bashrc
+# 保存配置好的环境变量
+nvcc --version
+# 检查cuda版本是否正确
+ls -l /usr/local/cuda
+# 查看软链接是否指向cuda11.8
+pip install torch_sparse==0.6.12
+pip install torch_points3d==1.3.0
+# 桉顺序下载这两个
+
