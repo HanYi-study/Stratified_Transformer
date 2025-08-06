@@ -64,4 +64,16 @@ pip install --upgrade pip setuptools wheel
 # 修改requirements.txt中setuptools==50.3.1.post20201107为setuptools>=50.3.1
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu116
 pip install -r requirements.txt
+# 运行结果从出现如下ERROR：
+#ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+#torchaudio 0.13.1+cu116 requires torch==1.13.1, but you have torch 1.7.1 which is incompatible.
+#可以发现：你系统中已经安装了 torchaudio 0.13.1+cu116，它要求 torch==1.13.1，但你当前安装的是 torch==1.7.1。这个问题不会影响当前大部分环境运行，尤其是如果你的项目（比如 stratified_transformer）没有用到 torchaudio。如果你的代码中不涉及音频处理模块（如 torchaudio.load() 等），你可以忽略这个冲突。
+# 如果你只是运行 3D 点云模型（如 torch_points3d, torch_geometric），并且你不需要音频相关功能，那么可以不用处理这个报错，环境算是配置成功的
+
+#现在遇到问题：刚才通过 requirements.txt 安装依赖时引入的PyTorch 1.7.1 + CUDA 10.2版本太低，不支持电脑上的 RTX 4090 D (sm_89) 显卡架构
+#应该：要在不新建环境的前提下继续使用 RTX 4090 编译 pointops2，你必须手动升级 PyTorch 和 CUDA 到兼容版本
+pip uninstall torch torchvision torchaudio -y  #卸载当前旧版本 PyTorch
+pip install torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118  # 安装支持 sm_89 的 PyTorch（CUDA 11.8，适配 RTX 4090）
+
+
 ```
