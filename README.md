@@ -63,5 +63,5 @@ conda activate stratified_transformer
 pip install --upgrade pip setuptools wheel  
 # 修改requirements.txt中setuptools==50.3.1.post20201107为setuptools>=50.3.1
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu116
-
+pip install -r requirements.txt
 ```
