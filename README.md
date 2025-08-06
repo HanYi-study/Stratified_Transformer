@@ -99,4 +99,4 @@ ls -l /usr/local/cuda
 pip install torch_sparse==0.6.12
 pip install torch_points3d==1.3.0
 # 桉顺序下载这两个
-
+pip install tensorboard timm termcolor tensorboardX
