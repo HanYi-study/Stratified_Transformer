@@ -79,7 +79,7 @@ pip install torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0 --ind
 
 ```
 ---
-- 第三次安装：
+- 第三次安装（成功）：
 ```bash
 conda create -n stratified_transformer_02 python=3.7
 conda activate stratified_transformer_02
@@ -99,4 +99,16 @@ ls -l /usr/local/cuda
 pip install torch_sparse==0.6.12
 pip install torch_points3d==1.3.0
 # 桉顺序下载这两个
-pip install tensorboard timm termcolor tensorboardX
+pip install timm==0.4.9
+pip install tensorboard
+pip install termcolor
+pip install tensorboardX
+```
+运行成功：
+```bash
+Installed /home/hy/miniconda3/envs/stratified_transformer_02/lib/python3.7/site-packages/pointops2-0.0.0-py3.7-linux-x86_64.egg
+Processing dependencies for pointops2==0.0.0
+Finished processing dependencies for pointops2==0.0.0
+```
+
+## S3DIS数据集准备（数据集预处理）
