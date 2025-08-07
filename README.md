@@ -134,6 +134,14 @@ ps:直接定义了DATA_PATH，更加可靠方便
 4. 执行数据预处理文件**collect_indooe3d_data.py**
   ```bash
   python collect_indooe3d_data.py
-  - --------------------------------------------------------------------------------------------------------------------------finished 25/08/07 16：22
+  ```
+  
+- 生成了.txt文件  如：/home/hy/projects/data/data_S3DIS/Stanford3dDataset_v1.2_Aligned_Version/Area_6/pantry_1/Annotations/wall_4.txt  
+/home/hy/projects/data/data_S3DIS/Stanford3dDataset_v1.2_Aligned_Version/Area_6/pantry_1/Annotations/clutter_5.txt  
+/home/hy/projects/data/data_S3DIS/Stanford3dDataset_v1.2_Aligned_Version/Area_6/pantry_1/Annotations/ceiling_1.txt  
+/home/hy/projects/data/data_S3DIS/Stanford3dDataset_v1.2_Aligned_Version/Area_6/pantry_1/Annotations/clutter_10.txt  
+/home/hy/projects/data/data_S3DIS/Stanford3dDataset_v1.2_Aligned_Version/Area_6/pantry_1/Annotations/clutter_2.txt  
+...
+ - -----------------------------------------------------------------------------------------------finished 25/08/07 16：22
   ---
   
