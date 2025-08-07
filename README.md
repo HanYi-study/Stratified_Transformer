@@ -113,3 +113,26 @@ Finished processing dependencies for pointops2==0.0.0
  - --------------------------------------------------------------------------------------------------------------------------finished 25/08/06 20：42
 ---
 ## S3DIS数据集准备（数据集预处理）
+### 准备预处理需要的文件/文件夹
+1. 创建data_prepare文件夹（存储S3DIS数据预处理的可执行文件），创建data_prepare_output（存储预处理结果）
+2. 在data_prepare文件夹中创建文件/文件夹，目录结构如下所示：
+```text
+data_prepare/
+├── __pycache__/
+│   └── indoor3d_util.cpython-37.pyc
+├── meta/
+│   ├── anno_paths.txt
+│   └── class_names.txt
+├── collect_indoor3d_data.py
+└── indoor3d_util.py
+```
+3. 在collect_indoor3d_data.py中修改路径  
+- 待处理数据的文件路径**DATA_PATH**为：/home/hy/projects/data/data_S3DIS/Stanford3dDataset_v1.2_Aligned_Version
+- 预处理后存放结果的文件路径**output_folder**为：/home/hy/projects/Stratified_Transformer/data_prepare_output
+ps:直接定义了DATA_PATH，更加可靠方便
+4. 执行数据预处理文件collect_indooe3d_data.py
+  ```bash
+  python collect_indooe3d_data.py
+  - --------------------------------------------------------------------------------------------------------------------------finished 25/08/07 20：42
+  ---
+  
