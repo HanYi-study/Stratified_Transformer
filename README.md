@@ -102,7 +102,8 @@ pip install torch_points3d==1.3.0
 pip install timm==0.4.9
 pip install tensorboard
 pip install termcolor
-pip install tensorboardX
+pip install tensorboard
+
 ```
 运行成功：
 ```bash
@@ -144,4 +145,28 @@ ps:直接定义了DATA_PATH，更加可靠方便
 ...
  - -----------------------------------------------------------------------------------------------finished 25/08/07 16：22
   ---
-  
+  ## 运行训练模型train.py
+```bash
+conda activate stratifier_transformer_02
+cd /home/hy/projects/Stratified_Transformer
+pip install h5py  # 报错缺少h5py包
+conda install -c conda-forge sharedarray   # 报错缺少sharedarray包
+# 建议直接用 conda-forge 安装，省得折腾 gcc 配置，而且和你环境的 numpy 版本也会自动匹配。conda-forge 里有预编译的 SharedArray，不需要本地编译器
+conda install -c conda-forge cudatoolkit=11.1    
+# 在运行train.py时报错PyTorch Geometric + CUDA 库版本不匹配
+# PyTorch 是 11.1，我们直接在 stratified_transformer_02 环境里补上 11.1 的 CUDA 运行时库
+# 这样会把 libcusparse.so.11、libcublas.so.11 等 CUDA 运行时库放到当前环境里，PyTorch 和 torch_sparse、torch_geometric 在加载时就能找到它们。
+pip uninstall torch-cluster torch-scatter torch-sparse torch-geometric torch-spline-conv -y # 先卸载掉原先的包
+pip install ./torch_scatter-2.0.6-cp37-cp37m-linux_x86_64.whl
+pip install ./torch_sparse-0.6.9-cp37-cp37m-linux_x86_64.whl
+pip install ./torch_cluster-1.5.9-cp37-cp37m-linux_x86_64.whl
+pip install ./torch_spline_conv-1.2.1-cp37-cp37m-linux_x86_64.whl
+pip install ./torch_geometric-1.7.2-py3-none-any.whl
+# 用官方whl包手动安装，访问 https://data.pyg.org/whl/torch-1.8.0+cu111.html（针对 Linux + Python 3.7，选择了四个以上文件，先下载到本地，再移动到项目文件中），再在项目中pip
+# PyTorch Geometric 生态里的某个库（torch_cluster）跟你现在的 Python 版本太旧，不兼容。
+# 现在仍想在3.7中配置，pip完上面四个文件之后，会显示一部分error，但仍是successfully，但仍存在依赖冲突，需要安装numpy=1.195.
+pip install numpy==1.19.5 --force-reinstall
+# 虽然conda list中显示numpy=1.19.5
+# 但是python -c "import numpy; print(numpy.__version__)"结果是numpy=1.21.6
+# 所以需要强制重新安装指定numpy版本
+# 再python -c "import numpy; print(numpy.__version__)"时会输出numpy=1.19.5
