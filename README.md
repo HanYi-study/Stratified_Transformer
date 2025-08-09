@@ -170,3 +170,6 @@ pip install numpy==1.19.5 --force-reinstall
 # 但是python -c "import numpy; print(numpy.__version__)"结果是numpy=1.21.6
 # 所以需要强制重新安装指定numpy版本
 # 再python -c "import numpy; print(numpy.__version__)"时会输出numpy=1.19.5
+```
+
+具体运行时遇到的问题以及解决办法详见文档**Stratified Transformer 训练环境问题与解决记录**
