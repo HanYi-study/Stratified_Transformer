@@ -172,4 +172,23 @@ pip install numpy==1.19.5 --force-reinstall
 # 再python -c "import numpy; print(numpy.__version__)"时会输出numpy=1.19.5
 ```
 
-具体运行时遇到的问题以及解决办法详见文档**Stratified Transformer 训练环境问题与解决记录**
+具体运行时遇到的问题以及解决办法详见文档**Stratified Transformer 训练环境问题与解决记录**  
+
+---
+
+## 训练结果
+开始训练时间：2025/08/09 21：02  
+结束训练时间：  
+总共运行时间：  
+训练结果存放路径：```/home/hy/projects/Stratified_Transformer/runs/s3dis_stratified_transformer/```
+- 模型权重路径：  
+  ```
+  /home/hy/projects/Stratified_Transformer/runs/s3dis_stratified_transformer/model/model_last.pth
+  /home/hy/projects/Stratified_Transformer/runs/s3dis_stratified_transformer/model/model_best.pth
+  ```
+- 训练日志路径：
+  ```
+  /home/hy/projects/Stratified_Transformer/runs/s3dis_stratified_transformer/log.txt
+  ```
+- TensorBoard 日志：
+  直接在 /home/hy/projects/Stratified_Transformer/runs/s3dis_stratified_transformer/ 目录下，可以用 TensorBoard 可视化。
