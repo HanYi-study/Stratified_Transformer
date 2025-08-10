@@ -168,3 +168,22 @@ export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 - 记录每一步操作和修改，便于后续环境迁移和复现。
 
 **finished 25/08/09 21:02**
+
+---
+
+## 8。若训练被中断，如何从断点处恢复
+用model_last.pth  
+```bash
+python3 train.py --config config/s3dis/s3dis_stratified_transformer.yaml --resume runs/s3dis_stratified_transformer/model/model_last.pth
+```
+- config :指定你的配置文件。
+- resume :指定上次保存的断点权重文件路径（通常为 model_last.pth）。
+这样训练会自动从上次中断的 epoch 继续，日志和权重也会继续追加和保存。
+
+
+**model_last.pth**  
+内容：保存了训练中“最后一次保存时”的模型参数、优化器、调度器等全部断点信息。  
+作用：用于断点续训（resume），可以无缝从中断的 epoch 继续训练。  
+**model_best.pth**  
+内容：保存了训练过程中验证集上**当前最优（mIoU 最大）**的模型参数  。
+作用：用于最终推理/测试/部署，一般用于模型评估和实际应用，不建议直接 resume 训练（因为它不一定包含优化器等断点信息）。  
