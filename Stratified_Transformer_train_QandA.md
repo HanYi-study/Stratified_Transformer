@@ -171,7 +171,7 @@ export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 
 ---
 
-## 8。若训练被中断，如何从断点处恢复
+## 8.若训练被中断，如何从断点处恢复
 用model_last.pth  
 ```bash
 python3 train.py --config config/s3dis/s3dis_stratified_transformer.yaml --resume runs/s3dis_stratified_transformer/model/model_last.pth
@@ -213,7 +213,7 @@ conda install -c conda-forge libstdcxx-ng
 ```bash
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 ```
-然后再运行你的训练命令。
+然后再运行你的训练命令。  
 3. 确认**GLIBCXX版本**
 执行：
 ```bash
