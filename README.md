@@ -5,6 +5,12 @@
 
 ---
 
+## 本仓库文件介绍
+- Stratified_Transformer_instructions.md：介绍整个训练过程，环境配置-->数据集准备-->执行训练脚本-->训练记录/结果
+- Stratified_Transformer_QandA.md：记录Stratified Transformer环境搭建与训练遇到的问题
+
+---
+
 ## 文件目录结构
 ```text
 Stratified_Transformer/
