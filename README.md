@@ -1,4 +1,10 @@
 # Stratified_transformer模型项目文件夹
+## 训练结果
+- 训练速度：平均5.5min一个epoch，batch_size=16（修改前为8，速度太慢）
+- 
+
+---
+
 ## 文件目录结构
 ```text
 Stratified_Transformer/
