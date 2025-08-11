@@ -205,13 +205,18 @@ ImportError: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.29' 
 解决方法
 1. 用conda升级libstdc++
 在你的conda环境下执行：
-
-2. 确保优先使用conda的libstdc++
+```bash
+conda install -c conda-forge libstdcxx-ng
+```
+2. 确保优先使用conda的**libstdc++**
 在终端执行：
-
+```bash
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
+```
 然后再运行你的训练命令。
-
-3. 确认GLIBCXX版本
+3. 确认**GLIBCXX版本**
 执行：
-
-确保输出中有GLIBCXX_3.4.29。
+```bash
+strings $CONDA_PREFIX/lib/libstdc++.so.6 | grep GLIBCXX
+```
+确保输出中有**GLIBCXX_3.4.29**。
