@@ -187,3 +187,31 @@ python3 train.py --config config/s3dis/s3dis_stratified_transformer.yaml --resum
 **model_best.pth**  
 内容：保存了训练过程中验证集上**当前最优（mIoU 最大）**的模型参数  。
 作用：用于最终推理/测试/部署，一般用于模型评估和实际应用，不建议直接 resume 训练（因为它不一定包含优化器等断点信息）。  
+
+---
+
+## 运行训练脚本时遇到如下问题：
+```bash
+(stratified_transformer_02) hy@hy:~/projects/Stratified_Transformer$ python3 train.py --config config/s3dis/s3dis_stratified_transformer.yaml
+Traceback (most recent call last):
+File "train.py", line 30, in <module>
+import torch_points_kernels as tp
+File "/home/hy/miniconda3/envs/stratified_transformer_02/lib/python3.7/site-packages/torch_points_kernels/init.py", line 1, in <module>
+from .torchpoints import *
+File "/home/hy/miniconda3/envs/stratified_transformer_02/lib/python3.7/site-packages/torch_points_kernels/torchpoints.py", line 7, in <module>
+import torch_points_kernels.points_cpu as tpcpu
+ImportError: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/hy/miniconda3/envs/stratified_transformer_02/lib/python3.7/site-packages/torch_points_kernels/points_cpu.so)
+```
+解决方法
+1. 用conda升级libstdc++
+在你的conda环境下执行：
+
+2. 确保优先使用conda的libstdc++
+在终端执行：
+
+然后再运行你的训练命令。
+
+3. 确认GLIBCXX版本
+执行：
+
+确保输出中有GLIBCXX_3.4.29。
