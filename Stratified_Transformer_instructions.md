@@ -177,11 +177,11 @@ pip install numpy==1.19.5 --force-reinstall
 ---
 
 ## 训练结果
-开始训练时间：2025/08/09 21：02 （由于4090d在下班后又一次出问题，10号早上我又来sudo reboot，昨晚上训练没跑完15/100epoch就断了，所以10号早上修好4090d就重新运行了）
-开始训练时间：2025/08/10 08：22
-结束训练时间：  
-总共运行时间：  
-训练结果存放路径：```/home/hy/projects/Stratified_Transformer/runs/s3dis_stratified_transformer/```
+开始训练时间：2025/08/09 21：02 （由于4090d在下班后又一次出问题，10号早上我又来sudo reboot，昨晚上训练没跑完15/100epoch就断了，所以10号早上修好4090d就重新运行了）  
+开始训练时间：2025/08/10 08：22  
+结束训练时间：    
+总共运行时间：    
+训练结果存放路径：```/home/hy/projects/Stratified_Transformer/runs/s3dis_stratified_transformer/```  
 - 模型权重路径：  
   ```
   /home/hy/projects/Stratified_Transformer/runs/s3dis_stratified_transformer/model/model_last.pth
