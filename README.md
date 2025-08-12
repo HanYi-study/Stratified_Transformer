@@ -1,6 +1,6 @@
 # Stratified_transformer模型项目文件夹
 ## 训练结果
-- 训练速度：平均5.5min一个epoch，batch_size=16（修改前为8，速度太慢）
+- 训练速度：平均12min一个epoch，batch_size=16（修改前为8，速度太慢）
 - best IoU = 7.7%
 - mIoU ≈ 7%
 
