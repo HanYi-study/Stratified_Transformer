@@ -230,6 +230,7 @@ strings $CONDA_PREFIX/lib/libstdc++.so.6 | grep GLIBCXX
 根据上述日志的时间记载  
 发现训练暂停于**格林尼治时间3：44（北京时间11：44）**（仍然在训练epoch80/100）  
 继续进行于**格林尼治时间5：33（北京时间13：33）**（从11：44暂停的位置继续训练）
+继续训练时未通过命令进行训练的启动，而是直接输入ssh密码
 
 2.第二条  
 <img width="1516" height="378" alt="image" src="https://github.com/user-attachments/assets/83851613-613f-4a5e-b19c-e843ac7de235" />
@@ -237,6 +238,7 @@ strings $CONDA_PREFIX/lib/libstdc++.so.6 | grep GLIBCXX
 根据日志中显示的格林尼治时间推断：  
 训练终止于**格里尼治时间2025年8月11日 13：31（北京时间21：31）**
 训练继续于**格里尼治时间2025年8月12日 00：07（北京时间08：07）**
+继续训练的时候先输入了ssh密码，再通过bash命令进行了训练的启动
 
 3.第三条
 <img width="1497" height="457" alt="image" src="https://github.com/user-attachments/assets/65b0c8d9-1194-43ae-80a0-8994eb125d6e" />
@@ -244,3 +246,4 @@ strings $CONDA_PREFIX/lib/libstdc++.so.6 | grep GLIBCXX
 根据日志中显示的格林尼治时间推断：
 训练终止于**格林尼治时间2025年8月10日 13：48（北京时间21：48）**
 训练继续于**格林尼治时间2025年8月11日 06：15（北京时间14：15）**
+继续训练的时候先输入了ssh密码，再通过bash命令进行了训练的启动
