@@ -247,3 +247,41 @@ strings $CONDA_PREFIX/lib/libstdc++.so.6 | grep GLIBCXX
 训练终止于**格林尼治时间2025年8月10日 13：48（北京时间21：48）**
 训练继续于**格林尼治时间2025年8月11日 06：15（北京时间14：15）**
 继续训练的时候先输入了ssh密码，再通过bash命令进行了训练的启动
+
+---
+
+## 11.关于mIoU=7%的排错
+找到问题的原因：
+- 问题出在读取预处理后的数据时，读取的是第7列，而实际预处理后的数据（官方格式）中标签存放在第9列，修改前代码如下：
+<img width="739" height="624" alt="image" src="https://github.com/user-attachments/assets/dd3bab23-e34a-4b16-a1e5-0b94c5865d8f" />
+
+- 修改后代码如下：
+<img width="753" height="620" alt="image" src="https://github.com/user-attachments/assets/0da82798-25f1-4275-a9db-4844e1ccb96d" />
+
+- **data_prepare_output**中数据内容：
+  
+  ```text
+    列号	含义	说明
+     0	   x	  点的x坐标
+     1	   y	  点的y坐标
+     2	   z	  点的z坐标
+     3	   r	  红色通道（0-255）
+     4	   g	  绿色通道（0-255）
+     5	   b	  蓝色通道（0-255）
+     6	  label	语义类别标签（整数）
+  ```
+  
+- **data_prepare_output_converted**中数据内容：
+
+  ```text
+  列号	含义	说明
+   0	   x	点的 x 坐标
+   1	   y	点的 y 坐标
+   2	   z	点的 z 坐标
+   3	   r	红色通道（0-255）
+   4	   g	绿色通道（0-255）
+   5	   b	蓝色通道（0-255）
+   6	   ?	可能为 instance id 或保留位 / 插值，为了转换为9列数据
+   7	   ?	可能为 instance id 或保留位 / 插值，为了转换为9列数据
+   8	 label	语义类别标签（整数）
+  ```
