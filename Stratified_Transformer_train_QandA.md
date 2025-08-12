@@ -285,3 +285,4 @@ strings $CONDA_PREFIX/lib/libstdc++.so.6 | grep GLIBCXX
    7	   ?	可能为 instance id 或保留位 / 插值，为了转换为9列数据
    8	 label	语义类别标签（整数）
   ```
+- 使用**check_labels.py**排查data_prepare_output_converted文件见下是否第9列全部为labels，如果都是则返回True，如果有的不是，则返回该文件名
