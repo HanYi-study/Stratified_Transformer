@@ -190,7 +190,7 @@ python3 train.py --config config/s3dis/s3dis_stratified_transformer.yaml --resum
 
 ---
 
-## 运行训练脚本时遇到如下问题：
+## 9.运行训练脚本时遇到如下问题：
 ```bash
 (stratified_transformer_02) hy@hy:~/projects/Stratified_Transformer$ python3 train.py --config config/s3dis/s3dis_stratified_transformer.yaml
 Traceback (most recent call last):
@@ -220,3 +220,27 @@ export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 strings $CONDA_PREFIX/lib/libstdc++.so.6 | grep GLIBCXX
 ```
 确保输出中有**GLIBCXX_3.4.29**。
+
+---
+
+## 10.关于训练经常中断导致执行时间太长、效率低下的发现
+1.第一条  
+<img width="1460" height="796" alt="image" src="https://github.com/user-attachments/assets/48061069-4e91-400a-ba0b-430bb2d86a67" />  
+于2025年8月12日下午13：35发现，训练进度是epoch80/100，资源监控网页显示GPU从未停止使用  
+根据上述日志的时间记载  
+发现训练暂停于**格林尼治时间3：44（北京时间11：44）**（仍然在训练epoch80/100）  
+继续进行于**格林尼治时间5：33（北京时间13：33）**（从11：44暂停的位置继续训练）
+
+2.第二条  
+<img width="1516" height="378" alt="image" src="https://github.com/user-attachments/assets/83851613-613f-4a5e-b19c-e843ac7de235" />
+2025年8月12日早8：00发现训练又被暂停  ，GPU早已结束使用
+根据日志中显示的格林尼治时间推断：  
+训练终止于**格里尼治时间2025年8月11日 13：31（北京时间21：31）**
+训练继续于**格里尼治时间2025年8月12日 00：07（北京时间08：07）**
+
+3.第三条
+<img width="1497" height="457" alt="image" src="https://github.com/user-attachments/assets/65b0c8d9-1194-43ae-80a0-8994eb125d6e" />
+2025年8月11日早发现训练暂停，GPU早已结束使用
+根据日志中显示的格林尼治时间推断：
+训练终止于**格林尼治时间2025年8月10日 13：48（北京时间21：48）**
+训练继续于**格林尼治时间2025年8月11日 06：15（北京时间14：15）**
