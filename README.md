@@ -1,4 +1,6 @@
 # Stratified_transformer模型项目文件夹
+- <mark>Stratified_Transformer_instructions.md 记载执行过程 / 环境配置等</mark>
+- <mark>Stratified_Transformer_train_QandA.md  记载执行/环境配置等过程遇到的问题及解决方案</mark>
 ## 训练结果
 - 第一次完整训练结果：
     - 训练速度：平均12min一个epoch，batch_size=16（修改前为8，速度太慢）
