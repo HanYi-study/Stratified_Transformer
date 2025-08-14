@@ -286,3 +286,8 @@ strings $CONDA_PREFIX/lib/libstdc++.so.6 | grep GLIBCXX
    8	 label	语义类别标签（整数）
   ```
 - 使用**check_labels.py**排查data_prepare_output_converted文件见下是否第9列全部为labels，如果都是则返回True，如果有的不是，则返回该文件名
+
+---
+
+## lib文件夹下代码缺失
+由于上传限制文件大小，部分文件未上传，可去原作者仓库中克隆
