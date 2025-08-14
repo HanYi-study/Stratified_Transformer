@@ -121,7 +121,7 @@ relative_position_index = relative_position_index.clamp(min=0)
 
 ---
 
-## 6. 总结与命令汇总
+## 6. 总结与命令汇总（暂时不要参考，仅供个人记录）
 
 ### 6.1 卸载所有相关包
 
