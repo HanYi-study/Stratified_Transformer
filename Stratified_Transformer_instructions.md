@@ -83,10 +83,10 @@ pip install torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0 --ind
 ```bash
 conda create -n stratified_transformer_02 python=3.7
 conda activate stratified_transformer_02
-wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
-sudo sh cuda_11.8.0_520.61.05_linux.run
-# 上面这两行是安装cuda11.8（在安装11.8之前我把所有的cuda全部删除了，后期还得再下回来，删除的原因是我没搞懂cuda存在于哪里，由谁使用）
-export CUDA_HOME=/usr/local/cuda-11.8
+wget https://developer.download.nvidia.com/compute/cuda/11.6.0/local_installers/cuda_11.6.0_520.61.05_linux.run
+sudo sh cuda_11.6.0_520.61.05_linux.run
+# 上面这两行是安装cuda11.6（在安装11.6之前我把所有的cuda全部删除了，后期还得再下回来，删除的原因是我没搞懂cuda存在于哪里，由谁使用）
+export CUDA_HOME=/usr/local/cuda-11.6
 export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 # 安装好cuda之后必须配置好环境变量
@@ -95,8 +95,8 @@ source ~/.bashrc
 nvcc --version
 # 检查cuda版本是否正确
 ls -l /usr/local/cuda
-# 查看软链接是否指向cuda11.8
-pip install torch_sparse==0.6.12
+# 查看软链接是否指向cuda11.6
+pip install torch_sparse==0.6.9
 pip install torch_points3d==1.3.0
 # 桉顺序下载这两个
 pip install timm==0.4.9
@@ -105,6 +105,7 @@ pip install termcolor
 pip install tensorboard
 
 ```
+<mark>如果有缺失的包，可以参考下面执行训练过程中补充的内容</mark>
 运行成功：
 ```bash
 Installed /home/hy/miniconda3/envs/stratified_transformer_02/lib/python3.7/site-packages/pointops2-0.0.0-py3.7-linux-x86_64.egg
