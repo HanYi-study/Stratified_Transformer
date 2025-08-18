@@ -105,7 +105,7 @@ pip install termcolor
 pip install tensorboard
 
 ```
-<mark>如果有缺失的包，可以参考下面执行训练过程中补充的内容</mark>
+<mark>如果有缺失的包，可以参考下面执行训练过程中补充的内容</mark>  
 运行成功：
 ```bash
 Installed /home/hy/miniconda3/envs/stratified_transformer_02/lib/python3.7/site-packages/pointops2-0.0.0-py3.7-linux-x86_64.egg
