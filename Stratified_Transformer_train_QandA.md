@@ -179,6 +179,7 @@ python3 train.py --config config/s3dis/s3dis_stratified_transformer.yaml --resum
 - config :指定你的配置文件。
 - resume :指定上次保存的断点权重文件路径（通常为 model_last.pth）。
 这样训练会自动从上次中断的 epoch 继续，日志和权重也会继续追加和保存。
+<mark>可以不修改yaml文件，直接用命令行制定断点文件 / 或者不执行本条命令（指定断点文件的命令）而将yaml文件中train中resume更改为model_last权重文件，保存修改后执行首次启动时使用的启动训练命令即可</mark>
 
 
 **model_last.pth**  
